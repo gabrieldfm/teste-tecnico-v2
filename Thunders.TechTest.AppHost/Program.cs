@@ -9,7 +9,7 @@ var rabbitMq = builder.AddRabbitMQ("RabbitMq", password: rabbitMqPassword)
     .WithManagementPlugin();
 
 var sqlServerPassword = builder.AddParameter("SqlServerInstancePassword", true);
-var sqlServer = builder.AddSqlServer("SqlServerInstance", sqlServerPassword)
+var sqlServer = builder.AddSqlServer("SqlServerInstance", sqlServerPassword, 1234)
     .WithDataVolume();
 
 var database = sqlServer.AddDatabase("ThundersTechTestDb", "ThundersTechTest");
