@@ -7,16 +7,14 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 {
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Entity<ParticipantVoting>()
-            .HasKey(pv => new { pv.Id, pv.VotingId, pv.ParticipantId });
-
         builder.Entity<TollUsage>(t =>
         {
             t.HasKey(e => e.Id);
 
-            t.Property();
+            t.Property(e => e.TollDescription).HasMaxLength(200);
+            t.Property(e => e.City).HasMaxLength(150);
+            t.Property(e => e.State).HasMaxLength(100);
         });
-            
 
         base.OnModelCreating(builder);
     }
